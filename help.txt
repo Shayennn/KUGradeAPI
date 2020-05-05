@@ -1,0 +1,19 @@
+POST api.php
+Content-type: application/x-www-form-urlencoded
+Body:
+    username: Nisit Nontri Account Username
+    password: Nisit Nontri Account Password
+
+Response
+    {
+        "status": true,
+        "data": [GRADEDATA]
+    }
+
+Error
+    {
+        "status": false,
+        "error_msg": ERROR_MSG
+    }
+
+Sometimes error_msg is array.

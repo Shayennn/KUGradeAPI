@@ -12,7 +12,7 @@ function get_main(){
     echo file_get_contents('help.txt');
 }
 
-if($_REQUEST['REQUEST_METHOD'] === 'POST')
+if($_SERVER['REQUEST_METHOD'] === 'POST')
     post_main();
 else
     get_main();

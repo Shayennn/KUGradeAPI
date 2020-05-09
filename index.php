@@ -2,6 +2,7 @@
 require_once('KUGrade.php');
 
 function post_main(){
+    header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
     $obj = new KUGrade($_POST['username'], $_POST['password']);
     echo json_encode($obj->getGrade());

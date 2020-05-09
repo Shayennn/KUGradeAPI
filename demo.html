@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>KUGradeAPI</title>
+</head>
+
+<body>
+    <form class="form-signin">
+        <!-- <form class="form-signin" style="display: none;"> -->
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">KUGradeAPI Demo</h1>
+            <p>An example of connecting with KUGradeAPI</p>
+        </div>
+
+        <div class="alert alert-danger" id="api_error" style="display: none;">
+        </div>
+
+        <div class="form-label-group">
+            <input type="text" id="txtUsername" class="form-control" placeholder="NontriAcc Username" required
+                autofocus>
+            <label for="txtUsername">NontriAcc Username</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="txtPassword" class="form-control" placeholder="NontriAcc Password" required>
+            <label for="txtPassword">NontriAcc Password</label>
+        </div>
+
+        <button id="RequestGrade" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
+        <p class="mt-5 mb-3 text-muted text-center">By submitting this form, You allow us to use your Nontri Account in
+            this API for 1 time. However, we don't keep any of your data.</p>
+    </form>
+
+    <section style="display: none;">
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">KUGradeAPI Demo</h1>
+            <p>Your grade</p>
+        </div>
+        <div class="row mb-4" id="result">
+        </div>
+
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

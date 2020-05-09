@@ -4,6 +4,7 @@ document.addEventListener('readystatechange', (event) => {
 
 function getGrade(e) {
     // e.preventDefault()
+    document.getElementById('api_error').setAttribute('style', 'display: none;')
     document.getElementById('RequestGrade').innerText = 'Loading'
     document.getElementById('RequestGrade').setAttribute('disabled', 'disabled')
     var username = document.getElementById('txtUsername').value
@@ -20,7 +21,7 @@ function getGrade(e) {
     fetch("index.php", requestOptions)
         .then(response => response.json())
         .then(result => processData(result))
-        .catch(error => onError(error));
+        .catch(error => showError(error));
 
 }
 
@@ -33,9 +34,13 @@ function processData(result) {
         document.getElementsByTagName('section')[0].removeAttribute('style')
         result.data.forEach(writeSubject)
     } else {
-        document.getElementById('api_error').innerHTML(result.error_msg)
-        document.getElementById('api_error').removeAttribute('style')
+        showError(result.error_msg)
     }
+}
+
+function showError(error){
+    document.getElementById('api_error').innerHTML = error
+    document.getElementById('api_error').removeAttribute('style')
 }
 
 function writeSubject(sub) {

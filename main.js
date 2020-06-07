@@ -2,6 +2,26 @@ document.addEventListener('readystatechange', (event) => {
     document.getElementById('RequestGrade').addEventListener('click', getGrade)
 });
 
+var fieldState = 0;
+
+function FieldHandle(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        switch (fieldState) {
+            case 0:
+                document.getElementById('txtPassword').focus()
+                break
+            case 1:
+                document.getElementById('txtSemesterCode').focus()
+                break
+            case 2:
+                getGrade(e)
+                break
+        }
+        fieldState += 1
+    }
+}
+
 function getGrade(e) {
     // e.preventDefault()
     document.getElementById('api_error').setAttribute('style', 'display: none;')

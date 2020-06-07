@@ -25,14 +25,21 @@
         </div>
 
         <div class="form-label-group">
-            <input type="text" id="txtUsername" class="form-control" placeholder="NontriAcc Username" required
-                autofocus>
+            <input type="text" id="txtUsername" class="form-control" placeholder="NontriAcc Username"
+                autocomplete="itrytodisablethis" autofocus onkeypress="FieldHandle(event)">
             <label for="txtUsername">NontriAcc Username</label>
         </div>
 
         <div class="form-label-group">
-            <input type="password" id="txtPassword" class="form-control" placeholder="NontriAcc Password" required>
+            <input type="password" id="txtPassword" class="form-control" placeholder="NontriAcc Password"
+                autocomplete="itrytodisablethis" onkeypress="FieldHandle(event)">
             <label for="txtPassword">NontriAcc Password</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="number" id="txtSemesterCode" class="form-control" placeholder="SemesterCode"
+                autocomplete="itrytodisablethis" onkeypress="FieldHandle(event)">
+            <label for="txtSemesterCode">Semester Code (Blank = LastSem)</label>
         </div>
 
         <button id="RequestGrade" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
@@ -42,8 +49,8 @@
 
     <section style="display: none;">
         <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">KUGradeAPI Demo</h1>
-            <p>Your grade</p>
+            <h1 class="h3 mb-3 font-weight-normal">KUGrade</h1>
+            <p><span id="semesterTxt">This semester.</span></p>
         </div>
         <div class="row mb-4" id="result">
         </div>

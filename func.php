@@ -17,6 +17,11 @@ function getAllInput($html){
     return array_combine($matches[1], $matches[2]);
 }
 
+function getAvailableSemesters($html){
+    preg_match_all('/<option.*? value="([0-9]{3})">/', $html, $matches);
+    return $matches[1];
+}
+
 function getAlert($html){
     preg_match_all('/alert\(\'(.*?)\'\)/', $html, $matches);
     for($i=0; $i<count($matches[0]); $i++){

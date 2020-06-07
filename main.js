@@ -50,6 +50,7 @@ function processData(result) {
     document.getElementById('RequestGrade').removeAttribute('disabled')
     console.log(result)
     if (result.status) {
+        document.getElementById('semesterTxt').innerText = semcodeToTxt(result.semester)
         document.getElementsByClassName('form-signin')[0].setAttribute('style', 'display: none;')
         document.getElementsByTagName('section')[0].removeAttribute('style')
         result.data.forEach(writeSubject)
@@ -58,7 +59,29 @@ function processData(result) {
     }
 }
 
-function showError(error){
+function semcodeToTxt(semcode) {
+    var year = Math.floor(semcode / 10)
+    year += 2500 - 543
+    var sem = semcode % 10
+    var semtxt = ''
+    switch (sem) {
+        case 0:
+            semtxt += 'Summer Session '
+            break
+        case 1:
+            semtxt += 'Fisrt Semester '
+            break
+        case 2:
+            semtxt += 'Second Semester '
+            break
+        default:
+            semtxt += sem + ' Semester '
+    }
+    semtxt += year
+    return semtxt
+}
+
+function showError(error) {
     document.getElementById('api_error').innerHTML = error
     document.getElementById('api_error').removeAttribute('style')
 }

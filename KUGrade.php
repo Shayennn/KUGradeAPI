@@ -64,6 +64,7 @@ class KUGrade
 
         if ($semester === NULL || $semavailable[count($semavailable) - 1] == strval($semester)) {
             $grades = fetchGrade($result['text']);
+            file_put_contents('access_log.txt', date('r').' IP: '.$_SERVER['REMOTE_ADDR'].' Username: '.$this->username.' Sem: '.$semavailable[count($semavailable) - 1]."\n", FILE_APPEND);
             return array(
                 'status' => TRUE,
                 'semester' => $semavailable[count($semavailable) - 1],
@@ -95,6 +96,7 @@ class KUGrade
                 );
             }
             $grades = fetchGrade($result['text']);
+            file_put_contents('access_log.txt', date('r').' IP: '.$_SERVER['REMOTE_ADDR'].' Username: '.$this->username.' Sem: '.$semester."\n", FILE_APPEND);
             return array(
                 'status' => TRUE,
                 'semester' => intval($semester),

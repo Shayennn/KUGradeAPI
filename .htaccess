@@ -1,0 +1,4 @@
+<Files "access_log.txt">  
+  Order Allow,Deny
+  Deny from all
+</Files>

@@ -37,14 +37,14 @@
         </div>
 
         <div class="form-label-group">
-            <input type="number" id="txtSemesterCode" class="form-control" placeholder="SemesterCode"
-                autocomplete="itrytodisablethis" onkeypress="FieldHandle(event)">
-            <label for="txtSemesterCode">Semester Code (Blank = LastSem)</label>
+            <select id="txtSemesterCode" class="form-control" autocomplete="itrytodisablethis" onkeypress="FieldHandle(event)">
+                <option value="">Last semester.</option>
+            </select>
         </div>
 
         <button id="RequestGrade" class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
-        <p class="mt-5 mb-3 text-muted text-center">By submitting this form, You allow us to use your Nontri Account in
-            this API for 1 time. However, we don't keep any of your data.</p>
+        <p class="mt-5 mb-3 text-muted text-center">By submitting this form or using semester selector, You allow us to use your Nontri Account in
+            this API not more than two times. However, we don't keep any of your data.</p>
     </form>
 
     <section style="display: none;">

@@ -1,5 +1,6 @@
 document.addEventListener('readystatechange', (event) => {
     document.getElementById('RequestGrade').addEventListener('click', getGrade)
+    document.getElementById('txtSemesterCode').addEventListener('click', getAvailableSem)
 });
 
 var fieldState = 0;
@@ -22,6 +23,52 @@ function FieldHandle(e) {
     }
 }
 
+var avaisem
+var avaisem_user
+var firstdata
+
+function getAvailableSem(e) {
+    var username = document.getElementById('txtUsername').value
+    var password = document.getElementById('txtPassword').value
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("username", username);
+    urlencoded.append("password", password);
+    if (avaisem_user == username) {
+        return
+    }
+    var requestOptions = {
+        method: 'POST',
+        body: urlencoded
+    };
+
+    fetch("index.php", requestOptions)
+        .then(response => response.json())
+        .then(result => showavaisem(result));
+    return e
+}
+
+function showavaisem(result) {
+    document.getElementById('txtSemesterCode').innerHTML = '<option value="">Last semester.</option>'
+    if (result.status) {
+        firstdata = result
+        avaisem_user = document.getElementById('txtUsername').value
+        avaisem = result.semavailable
+        avaisem.forEach((semcode, i) => {
+            var op = document.createElement('option')
+            op.innerHTML = semcodeToTxt(semcode)
+            op.value = semcode
+            if (i == avaisem.length - 1) {
+                op.value = ''
+            }
+            document.getElementById('txtSemesterCode').appendChild(op)
+        })
+    } else {
+        avaisem_user = null
+        avaisem = null
+        firstdata = null
+    }
+}
+
 function getGrade(e) {
     // e.preventDefault()
     document.getElementById('api_error').setAttribute('style', 'display: none;')
@@ -35,6 +82,9 @@ function getGrade(e) {
     urlencoded.append("password", password);
     if (semester != '') {
         urlencoded.append("semester", semester);
+    } else if (avaisem_user == username) {
+        processData(firstdata)
+        return
     }
 
     var requestOptions = {

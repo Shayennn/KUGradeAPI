@@ -29,9 +29,13 @@ function getGrade(e) {
     document.getElementById('RequestGrade').setAttribute('disabled', 'disabled')
     var username = document.getElementById('txtUsername').value
     var password = document.getElementById('txtPassword').value
+    var semester = document.getElementById('txtSemesterCode').value
     var urlencoded = new URLSearchParams();
     urlencoded.append("username", username);
     urlencoded.append("password", password);
+    if (semester != '') {
+        urlencoded.append("semester", semester);
+    }
 
     var requestOptions = {
         method: 'POST',

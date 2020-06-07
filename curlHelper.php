@@ -1,17 +1,20 @@
 <?php
 
-class curlHelper{
+class curlHelper
+{
 
     private $ch;
 
-    public function __destruct(){
+    public function __destruct()
+    {
         curl_close($this->ch);
         unlink('.htgradecc');
     }
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->ch = curl_init();
-        curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 5); 
+        curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($this->ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($this->ch, CURLOPT_COOKIEJAR, '.htgradecc');
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
@@ -19,14 +22,15 @@ class curlHelper{
         curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
     }
 
-    public function HttpGET($url, $param = array()){
-        curl_setopt($this->ch, CURLOPT_URL, $url.'?'.http_build_query($param));
+    public function HttpGET($url, $param = array())
+    {
+        curl_setopt($this->ch, CURLOPT_URL, $url . '?' . http_build_query($param));
         curl_setopt($this->ch, CURLOPT_POST, 0);
         $result = curl_exec($this->ch);
         if (!curl_errno($this->ch)) {
             $http_code = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
             $redirected_url = curl_getinfo($this->ch, CURLINFO_REDIRECT_URL);
-            if($redirected_url === FALSE)
+            if ($redirected_url === FALSE)
                 $redirected_url = $url;
             return array(
                 'status' => TRUE,
@@ -37,15 +41,16 @@ class curlHelper{
         }
     }
 
-    public function HttpPOST($url, $param = array(), $data = array()){
-        curl_setopt($this->ch, CURLOPT_URL, $url.'?'.http_build_query($param));
+    public function HttpPOST($url, $param = array(), $data = array())
+    {
+        curl_setopt($this->ch, CURLOPT_URL, $url . '?' . http_build_query($param));
         curl_setopt($this->ch, CURLOPT_POST, 1);
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, http_build_query($data));
         $result = curl_exec($this->ch);
         if (!curl_errno($this->ch)) {
             $http_code = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
             $redirected_url = curl_getinfo($this->ch, CURLINFO_REDIRECT_URL);
-            if($redirected_url === FALSE)
+            if ($redirected_url === FALSE)
                 $redirected_url = $url;
             return array(
                 'status' => TRUE,
@@ -55,5 +60,4 @@ class curlHelper{
             );
         }
     }
-
 }

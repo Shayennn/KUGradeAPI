@@ -3,6 +3,7 @@ Content-type: application/x-www-form-urlencoded
 Body:
     username: Nisit Nontri Account Username
     password: Nisit Nontri Account Password
+    [Optional] semester: Semester code (AAB Format. AA = Year B = Semester. Example: 620 = Summer of 2562)
 
 Response
     {

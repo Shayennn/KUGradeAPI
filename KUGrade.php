@@ -67,6 +67,7 @@ class KUGrade
             return array(
                 'status' => TRUE,
                 'semester' => $semavailable[count($semavailable) - 1],
+                'semavailable' => $semavailable,
                 'data' => $grades
             );
         } elseif (in_array(strval($semester), $semavailable)) {
@@ -97,6 +98,7 @@ class KUGrade
             return array(
                 'status' => TRUE,
                 'semester' => intval($semester),
+                'semavailable' => $semavailable,
                 'data' => $grades
             );
         } else {

@@ -123,7 +123,7 @@ function semcodeToTxt(semcode) {
             semtxt += 'Summer Session '
             break
         case 1:
-            semtxt += 'Fisrt Semester '
+            semtxt += 'First Semester '
             break
         case 2:
             semtxt += 'Second Semester '
